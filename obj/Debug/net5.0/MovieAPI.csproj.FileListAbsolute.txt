@@ -133,3 +133,5 @@ C:\Users\RB\source\repos\MovieAPI\obj\Debug\net5.0\ref\MovieAPI.dll
 C:\Users\RB\source\repos\MovieAPI\obj\Debug\net5.0\MovieAPI.pdb
 C:\Users\RB\source\repos\MovieAPI\obj\Debug\net5.0\MovieAPI.genruntimeconfig.cache
 C:\Users\RB\source\repos\MovieAPI\obj\Debug\net5.0\MovieAPI.csproj.AssemblyReference.cache
+C:\Users\RB\source\repos\MovieAPI\bin\Debug\net5.0\MovieAPI.xml
+C:\Users\RB\source\repos\MovieAPI\obj\Debug\net5.0\MovieAPI.xml
