@@ -134,18 +134,18 @@ namespace MovieAPI.Controllers
             }
 
             var movieItem = await _context.Movies.FindAsync(id);
-
-            var validationMessages = MovieAPI.Models.MovieService.ValidateNewMovie(movieDTO, _context.Movies);
-            if(validationMessages.Any())
-            {
-                return Problem(validationMessages, statusCode: (int)System.Net.HttpStatusCode.BadRequest);
-            }
-
             if (movieItem == null)
             {
                 return NotFound();
             }
 
+
+            var validationMessages = MovieAPI.Services.MovieService.ValidateNewMovie(movieDTO, _context.Movies.AsQueryable<Movie>());
+            if(validationMessages.Any())
+            {
+                return Problem(validationMessages, statusCode: (int)System.Net.HttpStatusCode.BadRequest);
+            }
+                        
             movieItem.Name = movieDTO.Name;
             movieItem.Language = movieDTO.Language;
             movieItem.FilmingStarted = movieDTO.FilmingStarted;
@@ -177,7 +177,7 @@ namespace MovieAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Movie>> PostMovie(MovieDTO movieDTO)
         {
-            var errorMessages = MovieAPI.Models.MovieService.ValidateNewMovie(movieDTO, _context.Movies);
+            var errorMessages = MovieAPI.Services.MovieService.ValidateNewMovie(movieDTO, _context.Movies.AsQueryable<Movie>());
             if (errorMessages.Length == 0)
             {
                 var newMovie = new Movie
