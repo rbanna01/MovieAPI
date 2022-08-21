@@ -3,14 +3,24 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>  
-<GenerateProgramFile>false</GenerateProgramFile>	
+<GenerateProgramFile>false</GenerateProgramFile>  
+<OutputType>Library</OutputType>	
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="MovieAPITests\**" />
-    <Content Remove="MovieAPITests\**" />
-    <EmbeddedResource Remove="MovieAPITests\**" />
+    <Content Remove="MovieAPITests\**" />   
+	  <EmbeddedResource Remove="MovieAPITests\**" />
     <None Remove="MovieAPITests\**" />
+	  
   </ItemGroup>
 
   <ItemGroup>

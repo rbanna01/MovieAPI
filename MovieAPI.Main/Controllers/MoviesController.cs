@@ -7,12 +7,14 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MovieAPI.Models;
+using MovieAPI.Services;
+using static MovieAPI.Services.MovieSearchFilters;
 
 namespace MovieAPI.Controllers
 {
     [Route("api/Movies")]
     [ApiController]
-   // [Produces("application/json")]
+    // [Produces("application/json")]
     public class MoviesController : ControllerBase
     {
         private readonly MovieContext _context;
@@ -23,7 +25,7 @@ namespace MovieAPI.Controllers
 #if DEBUG
             long putTestHappyPathItemID = 5000;
 
-            if(!context.Movies.Any(x => x.ID == putTestHappyPathItemID))
+            if (!context.Movies.Any(x => x.ID == putTestHappyPathItemID))
             {
                 context.Movies.Add(new Movie()
                 { //Also used in GET test happyPath
@@ -32,9 +34,9 @@ namespace MovieAPI.Controllers
                     Language = 1,
                     FilmingStarted = new DateTime(),
                     FilmingEnded = new DateTime()
-                }); 
+                });
             }
-            if(!context.Movies.Any(x => x.Name =="Duplicate Test"))
+            if (!context.Movies.Any(x => x.Name == "Duplicate Test"))
             {
                 context.Movies.Add(new Movie()
                 {//Duplicate in POST unit tests
@@ -77,11 +79,39 @@ namespace MovieAPI.Controllers
         [HttpGet]
         [AllowAnonymous]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        //[Route("api/movies")]
         public async Task<ActionResult<IEnumerable<MovieDTO>>> GetMovies()
         {
             return await _context.Movies
                 .Select(movie => MovieToDTO(movie))
                 .ToListAsync();
+        }
+
+        /// <summary>
+        /// Gets all movie records, filtered by criteria passed in filters arg
+        /// </summary>
+        /// <returns>Array of MovieDTO objects</returns>
+        /// <response code="200">All records returned as list of MovieDTOs in json</response>
+        // GET: api/Movies 
+        [HttpPost("byNameFilter")]
+        [AllowAnonymous]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<IEnumerable<MovieDTO>>> GetFilteredMovies(NameSearchFilterDTO filterIn)
+        {
+            if(filterIn != null)
+            {
+            
+            var filteredMovies = MovieSearchFilters.NameFilter(filterIn, _context.Movies);
+            return  await filteredMovies
+                   .Select(movie => MovieToDTO(movie))
+                   .ToListAsync();
+            }
+            else
+            {
+                return await _context.Movies
+                   .Select(movie => MovieToDTO(movie))
+                   .ToListAsync();
+            }
         }
 
         /// <summary>

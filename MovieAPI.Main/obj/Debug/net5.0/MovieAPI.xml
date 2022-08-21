@@ -11,6 +11,13 @@
             <returns>Array of MovieDTO objects</returns>
             <response code="200">All records returned as list of MovieDTOs in json</response>
         </member>
+        <member name="M:MovieAPI.Controllers.MoviesController.GetFilteredMovies(MovieAPI.Services.MovieSearchFilters.NameSearchFilterDTO)">
+            <summary>
+            Gets all movie records, filtered by criteria passed in filters arg
+            </summary>
+            <returns>Array of MovieDTO objects</returns>
+            <response code="200">All records returned as list of MovieDTOs in json</response>
+        </member>
         <member name="M:MovieAPI.Controllers.MoviesController.GetMovie(System.Int64)">
             <summary>
             Returns existing movie record with ID passed in, if any

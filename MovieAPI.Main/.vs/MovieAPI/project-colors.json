@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "313ddf0e-b76e-44bc-916d-038aea552415": {
+      "ProjectGuid": "313ddf0e-b76e-44bc-916d-038aea552415",
+      "DisplayName": "MovieServiceAPITests_NUnit",
+      "ColorIndex": 0
+    },
+    "5ab98fd1-3038-49ae-bd51-fd6b025f5e1b": {
+      "ProjectGuid": "5ab98fd1-3038-49ae-bd51-fd6b025f5e1b",
+      "DisplayName": "MovieAPI",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

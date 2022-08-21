@@ -12,8 +12,7 @@
           "MovieAPI": "1.0.0",
           "NUnit": "3.13.2",
           "NUnit3TestAdapter": "4.1.0",
-          "coverlet.collector": "3.1.0",
-          "MovieAPI.Reference": "1.0.0.0"
+          "coverlet.collector": "3.1.0"
         },
         "runtime": {
           "MovieServiceAPITests_NUnit.dll": {}
@@ -1722,12 +1721,18 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
-      "MovieAPI.Reference/1.0.0.0": {
+      "MovieAPI/1.0.0": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.InMemory": "5.0.11",
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.11",
+          "Microsoft.NET.Test.Sdk": "17.0.0",
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "5.0.2",
+          "NUnit": "3.13.2",
+          "NUnit3TestAdapter": "4.1.0",
+          "Swashbuckle.AspNetCore": "6.2.3"
+        },
         "runtime": {
-          "MovieAPI.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "MovieAPI.dll": {}
         }
       }
     }
@@ -2704,8 +2709,8 @@
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
     },
-    "MovieAPI.Reference/1.0.0.0": {
-      "type": "reference",
+    "MovieAPI/1.0.0": {
+      "type": "project",
       "serviceable": false,
       "sha512": ""
     }

@@ -86,6 +86,5 @@ namespace MovieServiceAPITests_NUnit
             toTest.Name = name;
             return UniqueRecordValidationItem.Validate(toTest, existingData);
         }
-        
     }
 }

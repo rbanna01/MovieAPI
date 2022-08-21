@@ -23,6 +23,13 @@ namespace MovieAPI.Services
                      .Where(x => (!x.Validate(toValidate, existingData)))
                      .Aggregate("", (x, y) => string.IsNullOrWhiteSpace(x) ? y.ValidationMessage : x + Environment.NewLine + y.ValidationMessage);
         }
+
+        public static IQueryable<Movie> FilterMovies(Services.MovieSearchFilters.MovieSearchFiltersDTO filterDTO, IQueryable<Movie> query)
+        {
+            return query;
+        }
+
+
         protected class ValidationItem
         {
             public Func<MovieDTO, IEnumerable<Movie>, bool> Validate;
